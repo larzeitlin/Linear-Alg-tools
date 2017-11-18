@@ -9,7 +9,7 @@ class Matrix:
         printCol
         getRow    : params(rownumber) : returns(array)
         getCol    : params(colnumber) : returns(array)
-        linComb   : params(vector)    : returns(Matrix)  <- Linear combination
+        linComb   : params(vector)    : returns(array)  <- Linear combination
         swapCol   : params(colA, colB)
         swapRow   : params(rowA, rowB)
         mMultedBy : params(Matrix)    : returns(Matrix)  <- matrix multiplied by
