@@ -3,7 +3,7 @@ import copy
 
 class Matrix:
     """ Matrix class with various methods useful for linear algebra
-    Mathods include:
+    Methods include:
         printMatrix
         printRow
         printCol
