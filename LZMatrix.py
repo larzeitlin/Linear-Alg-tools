@@ -2,6 +2,22 @@ import copy
 
 
 class Matrix:
+    """ Matrix class with various methods useful for linear algebra
+    Mathods include:
+        printMatrix
+        printRow
+        printCol
+        getRow    : params(rownumber) : returns(array)
+        getCol    : params(colnumber) : returns(array)
+        linComb   : params(vector)    : returns(Matrix)  <- Linear combination
+        swapCol   : params(colA, colB)
+        swapRow   : params(rowA, rowB)
+        mMultedBy : params(Matrix)    : returns(Matrix)  <- matrix multiplied by
+        transpose :                   : returns(Matrix)
+        ref       :                   : returns(Matrix)  <- row echelon form
+        rref      :                   : returns(Matrix)  <- reduced row echelon
+
+        """
 
     def __init__(self, matrix=[]):
         self.matrix = matrix
@@ -10,6 +26,7 @@ class Matrix:
         self.maxLengthString = self.calcMaxDig()
 
     def dotProduct(self, v1, v2):
+        """internal convenience method for dot product"""
         if(len(v1) != len(v2)):
             print("can't dot product, vectors don't match")
             return
@@ -19,6 +36,8 @@ class Matrix:
         return(output)
 
     def calcMaxDig(self):
+        """internal convenience method to help format printing.
+        calculated max width of column"""
         curMax = 0
         for i in range(self.numRows):
             self.matrix[i] = [float(x) for x in self.matrix[i]]
