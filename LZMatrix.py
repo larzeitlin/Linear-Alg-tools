@@ -27,9 +27,7 @@ class Matrix:
 
     def dotProduct(self, v1, v2):
         """internal convenience method for dot product"""
-        if(len(v1) != len(v2)):
-            print("can't dot product, vectors don't match")
-            return
+        assert (len(v1) == len(v2)), "vectors must be same length"
         output = 0
         for i in range(len(v1)):
             output += v1[i]*v2[i]
@@ -82,9 +80,7 @@ class Matrix:
         return(self.matrix[rowNum])
 
     def linComb(self, vector):
-        if(len(vector) != self.numVars):
-            print("vector doesn't match number of columns in Matrix")
-            return
+        assert len(vector) == self.numVars, "dimensions mis-match"
         output = []
         for row in self.matrix:
             outRow = 0
@@ -94,9 +90,7 @@ class Matrix:
         return(output)
 
     def matMultedBy(self, matrixB):
-        if(self.numVars != matrixB.numRows):
-            print("these vectors cannot be multiplied")
-            return
+        assert self.numVars == matrixB.numRows, "dimensions mis-match"
         prodNumRows = self.numRows
         prodNumVars = matrixB.numVars
         output = []
