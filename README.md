@@ -17,6 +17,36 @@
         rref      :                   : returns(Matrix)  <- reduced row echelon
         nulspace  :                   : returns(Matrix)  <- Null-space basis
 
+
+
+ ## features:
+	- obvious assignment from python built-in arrays:
+		```python
+		a = Matrix([[1, 3, 0, 2, -1], [0, 0, -1, 4, -3], [0, 0, 0, 0, 0]])
+		```
+	- pretty printing with evenly spaced columns. for example:
+		```python
+		a.printMatrix()
+		```
+		
+		```
+                | 1.0   3.0   0.0   2.0   -1.0 |
+                | 0.0   0.0   1.0   4.0   -3.0 |
+                | 0.0   0.0   0.0   0.0   0.0  |
+		```
+	- easly chain methods:
+		```python
+		a.transpose().printMatrix()
+		```
+
+		```
+		| 1.0   0.0   0.0  |
+		| 3.0   0.0   0.0  |
+		| 0.0   -1.0  0.0  |
+		| 2.0   4.0   0.0  |
+		| -1.0  -3.0  0.0  |
+		```
+
  ## To Do:
 	- column space
 	- row space
