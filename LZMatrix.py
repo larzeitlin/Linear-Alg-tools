@@ -144,6 +144,8 @@ class Matrix:
         return(output)
 
     def refp1s(self):
+        """internal convenience function
+        for setting all pivots to 1 for an ref"""
         output = self.ref()
         cx = 0
         cy = 0
