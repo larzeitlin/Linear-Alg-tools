@@ -23,7 +23,7 @@
 
  ## features:
 
-####obvious assignment from python built-in arrays:
+#### obvious assignment from python built-in arrays:
 
 
 ```python
@@ -31,7 +31,7 @@ a = Matrix([[1, 3, 0, 2, -1], [0, 0, -1, 4, -3], [0, 0, 0, 0, 0]])
 ```
 
 
-####pretty printing with evenly spaced columns. for example:
+#### pretty printing with evenly spaced columns. for example:
 
 
 ```python
@@ -46,7 +46,7 @@ a.printMatrix()
 ```
 
 
-####easly chain methods:
+#### easly chain methods:
 
 
 ```python
