@@ -143,33 +143,90 @@ class Matrix:
                 return(output)
         return(output)
 
-    def rref(self):
+    
+    def refp1s(self):
         output = self.ref()
         cx = 0
         cy = 0
         for index, row in enumerate(output.matrix):
             cy = index
+            print("working on row: ", index)
             while(output.matrix[cy][cx] == 0.0):
                 cx += 1
                 if(cx >= output.numVars):
                     return(output)
             pivot = output.matrix[cy][cx]
+            print("pivot {} at {}, {}".format(pivot, cx, cy))
+
             newrow = [i/pivot for i in row]
             output.matrix[index] = newrow
             output.printMatrix()
-        for r in range(self.numRows - 1, 0, -1):
+        print("all pivots set to 1")
+        return(output)
+
+    def rref(self):
+        output = self.refp1s()
+
+        for r in range(output.numRows - 1, 0, -1):
+            print("up-subbing from row {}".format(r))
             cx = 0
             cy = r
-            if(cx < output.numVars):
-                while(output.matrix[cy][cx] == 0.0):
-                    cx += 1
-            if(cx >= output.numVars):
-                break
-            for s in range(cy - 1, -1, -1):
-                operator = -(output.matrix[s][cx])
-                newrow = [x + (operator * output.matrix[cy][ind])
-                          for ind, x in
-                          enumerate(output.matrix[s])]
-                output.matrix[s] = newrow
-                output.printMatrix()
+            emptyRow = False
+            while(output.matrix[cy][cx] == 0.0):
+                cx += 1
+                if(cx >= output.numVars):
+                    emptyRow = True
+                    break
+            if(not emptyRow):
+                for s in range(cy - 1, -1, -1):
+                    print("replacing row {}". format(s))
+                    operator = -(output.matrix[s][cx])
+                    print("opeartor is: ", operator)
+                    newrow = [x + (operator * output.matrix[cy][ind])
+                              for ind, x in
+                              enumerate(output.matrix[s])]
+                    print("new row is: ", newrow)
+                    output.matrix[s] = newrow
+                    output.printMatrix()
         return(output)
+
+    def nulspace(self):
+        rref = self.rref()
+        cx = 0
+        cy = 0
+        pivots = []
+        for index, row in enumerate(rref.matrix):
+            cy = index
+            cx = 0
+            while(rref.matrix[cy][cx] == 0):
+                cx += 1
+                if(cx >= rref.numVars):
+                    break
+            if(cx >= rref.numVars):
+                break
+            pivots.append([[cx], [cy]])
+        numPivots = len(pivots)
+        numFree = rref.numVars - numPivots
+        pivCols = []
+        sequence = []
+        for i in pivots:
+            pivCols += i[0]
+        freeColVecs = []
+        for i in range(rref.numVars):
+            if i not in pivCols:
+                freeColVecs.append(rref.getColumn(i))
+        for i in range(rref.numVars):
+            sequence.append('P' if i in pivCols else 0)
+        output = []
+        for i in range(numFree):
+            temp = copy.deepcopy(sequence)
+            counter = -1
+            for j in range(len(temp)):
+                if temp[j] == 0:
+                    counter += 1
+                    if counter == i:
+                        temp[j] = 1
+                if temp[j] == 'P':
+                    temp[j] = -(freeColVecs[i].pop(0))
+            output.append(temp)
+        return(Matrix(output).transpose()) 
