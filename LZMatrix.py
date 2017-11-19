@@ -16,7 +16,7 @@ class Matrix:
         transpose :                   : returns(Matrix)
         ref       :                   : returns(Matrix)  <- row echelon form
         rref      :                   : returns(Matrix)  <- reduced row echelon
-
+        nulspace  :                   : returns(Matrix)  <- Nulspace basis
         """
 
     def __init__(self, matrix=[]):
@@ -143,32 +143,24 @@ class Matrix:
                 return(output)
         return(output)
 
-    
     def refp1s(self):
         output = self.ref()
         cx = 0
         cy = 0
         for index, row in enumerate(output.matrix):
             cy = index
-            print("working on row: ", index)
             while(output.matrix[cy][cx] == 0.0):
                 cx += 1
                 if(cx >= output.numVars):
                     return(output)
             pivot = output.matrix[cy][cx]
-            print("pivot {} at {}, {}".format(pivot, cx, cy))
-
             newrow = [i/pivot for i in row]
             output.matrix[index] = newrow
-            output.printMatrix()
-        print("all pivots set to 1")
         return(output)
 
     def rref(self):
         output = self.refp1s()
-
         for r in range(output.numRows - 1, 0, -1):
-            print("up-subbing from row {}".format(r))
             cx = 0
             cy = r
             emptyRow = False
@@ -179,15 +171,11 @@ class Matrix:
                     break
             if(not emptyRow):
                 for s in range(cy - 1, -1, -1):
-                    print("replacing row {}". format(s))
                     operator = -(output.matrix[s][cx])
-                    print("opeartor is: ", operator)
                     newrow = [x + (operator * output.matrix[cy][ind])
                               for ind, x in
                               enumerate(output.matrix[s])]
-                    print("new row is: ", newrow)
                     output.matrix[s] = newrow
-                    output.printMatrix()
         return(output)
 
     def nulspace(self):
