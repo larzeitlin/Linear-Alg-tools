@@ -20,6 +20,7 @@ class Matrix:
         rref      :                   : returns(Matrix)  <- reduced row echelon
         nulspace  :                   : returns(Matrix)  <- null space basis
         colspace  :                   : returns(Matrix)  <- column space basis
+        getRank   : params(Matrix)    : returns(int)     <- rank of matrix
 
         """
 
@@ -133,6 +134,21 @@ class Matrix:
             output.append(col)
         return(Matrix(output))
 
+    def findPivots(self):
+        """takes a ref or rref matrix to be useful"""
+        pivots = []
+        for index, row in enumerate(self.matrix):
+            cy = index
+            cx = 0
+            while(self.matrix[cy][cx] == 0):
+                cx += 1
+                if(cx >= self.numVars):
+                    break
+            if(cx >= self.numVars):
+                break
+            pivots.append([cx, cy])
+        return(pivots)
+
     def ref(self):
         cx = 0
         cy = 0
@@ -159,6 +175,10 @@ class Matrix:
             if(cx >= output.numVars):
                 return(output)
         return(output)
+
+    def getRank(self):
+        ref = self.ref()
+        return(len(ref.findPivots()))
 
     def refp1s(self):
         """internal convenience function
@@ -199,25 +219,11 @@ class Matrix:
 
     def nulspace(self):
         rref = self.rref()
-        cx = 0
-        cy = 0
-        pivots = []
-        for index, row in enumerate(rref.matrix):
-            cy = index
-            cx = 0
-            while(rref.matrix[cy][cx] == 0):
-                cx += 1
-                if(cx >= rref.numVars):
-                    break
-            if(cx >= rref.numVars):
-                break
-            pivots.append([[cx], [cy]])
+        pivots = rref.findPivots()
         numPivots = len(pivots)
         numFree = rref.numVars - numPivots
-        pivCols = []
+        pivCols = [i[0] for i in pivots]
         sequence = []
-        for i in pivots:
-            pivCols += i[0]
         freeColVecs = []
         for i in range(rref.numVars):
             if i not in pivCols:
@@ -240,22 +246,10 @@ class Matrix:
 
     def colspace(self):
         ref = self.ref()
-        cx = 0
-        cy = 0
-        pivotCols = []
-        for index, row in enumerate(ref.matrix):
-            cy = index
-            cx = 0
-            while(ref.matrix[cy][cx] == 0):
-                cx += 1
-                if(cx >= ref.numVars):
-                    break
-            if(cx >= ref.numVars):
-                break
-            pivotCols.append(cx)
+        pivotCols = [n[0] for n in ref.findPivots()]
         output = copy.deepcopy(self)
         for i in range(self.numVars - 1, -1, -1):
             if i not in pivotCols:
-                output.DeleteCol(i)
+                output.deleteCol(i)
         return(output)
-
+    
