@@ -21,7 +21,6 @@
         rref      :                   : returns(Matrix)  <- reduced row echelon
         nulspace  :                   : returns(Matrix)  <- null space basis
         colSpace  :                   : returns(Matrix)  <- column space basis
-        """
 
 ## features:
 
