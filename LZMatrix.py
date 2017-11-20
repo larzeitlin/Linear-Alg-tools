@@ -11,7 +11,7 @@ class Matrix:
         getCol    : params(colnumber) : returns(array)
         deleteCol : params(colnumber)
         deleteRow : params(rownumber)
-        linComb   : params(vector)    : returns(array)  <- Linear combination
+        linComb   : params(vector)    : returns(array)   <- Linear combination
         swapCol   : params(colA, colB)
         swapRow   : params(rowA, rowB)
         mMultedBy : params(Matrix)    : returns(Matrix)  <- matrix multiplied by
@@ -19,7 +19,7 @@ class Matrix:
         ref       :                   : returns(Matrix)  <- row echelon form
         rref      :                   : returns(Matrix)  <- reduced row echelon
         nulspace  :                   : returns(Matrix)  <- null space basis
-        colSpace  :                   : returns(Matrix)  <- column space basis
+        colspace  :                   : returns(Matrix)  <- column space basis
 
         """
 
@@ -238,7 +238,7 @@ class Matrix:
             output.append(temp)
         return(Matrix(output).transpose())
 
-    def colSpace(self):
+    def colspace(self):
         ref = self.ref()
         cx = 0
         cy = 0

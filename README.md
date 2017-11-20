@@ -20,7 +20,7 @@
         ref       :                   : returns(Matrix)  <- row echelon form
         rref      :                   : returns(Matrix)  <- reduced row echelon
         nulspace  :                   : returns(Matrix)  <- null space basis
-        colSpace  :                   : returns(Matrix)  <- column space basis
+        colspace  :                   : returns(Matrix)  <- column space basis
 
 ## features:
 
