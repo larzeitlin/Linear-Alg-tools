@@ -1,7 +1,7 @@
 # Linear-Alg-tools
 
 
-  ## Matrix class with various methods useful for studying linear algebra
+Matrix class with various methods useful for studying linear algebra
 
   ## Methods include:
         printMatrix
@@ -42,7 +42,7 @@ a = Matrix([[1, 3, 0, 2, -1], [0, 0, -1, 4, -3], [0, 0, 0, 0, 0]])
 ```
 
 
-#### pretty printing with evenly spaced columns. for example:
+#### pretty printing with evenly spaced columns:
 
 
 ```python
