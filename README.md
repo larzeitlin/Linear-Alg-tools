@@ -5,23 +5,25 @@
 
   ## Methods include:
 
-	   printMatrix
-	   printRow
-	   printCol
-	   getRow    : params(rownumber) : returns(array)
-	   getCol    : params(colnumber) : returns(array)
-	   linComb   : params(vector)    : returns(array)  <- Linear combination
-	   swapCol   : params(colA, colB)
-	   swapRow   : params(rowA, rowB)
-	   mMultedBy : params(Matrix)    : returns(Matrix)  <- matrix multiplied by
-	   transpose :                   : returns(Matrix)
-	   ref       :                   : returns(Matrix)  <- row echelon form
-	   rref      :                   : returns(Matrix)  <- reduced row echelon
-	   nulspace  :                   : returns(Matrix)  <- Null-space basis
+        printMatrix
+        printRow
+        printCol
+        getRow    : params(rownumber) : returns(array)
+        getCol    : params(colnumber) : returns(array)
+        deleteCol : params(colnumber)
+        deleteRow : params(rownumber)
+        linComb   : params(vector)    : returns(array)  <- Linear combination
+        swapCol   : params(colA, colB)
+        swapRow   : params(rowA, rowB)
+        mMultedBy : params(Matrix)    : returns(Matrix)  <- matrix multiplied by
+        transpose :                   : returns(Matrix)
+        ref       :                   : returns(Matrix)  <- row echelon form
+        rref      :                   : returns(Matrix)  <- reduced row echelon
+        nulspace  :                   : returns(Matrix)  <- null space basis
+        colSpace  :                   : returns(Matrix)  <- column space basis
+        """
 
-
-
- ## features:
+## features:
 
 #### obvious assignment from python built-in arrays:
 
