@@ -6,7 +6,7 @@ Matrix class with various methods useful for studying linear algebra
   ## Methods include:
   
 
- | Method       | Params             | returns          | Notes                      |
+ | method       | parameters         | returns          | notes                      |
  |--------------|--------------------|------------------|----------------------------|
  |  printMatrix |                    |                  |                            |  
  |  printRow    |                    |                  |                            | 
