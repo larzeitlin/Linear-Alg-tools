@@ -2,13 +2,14 @@ import copy
 
 
 class Matrix:
-    """ Matrix class with various methods useful for linear algebra
+    """ Matrix class with various methods useful for studying linear algebra
     Methods include:
         printMatrix
         printRow
         printCol
         getRow    : params(rownumber) : returns(array)
         getCol    : params(colnumber) : returns(array)
+        getVal    : params(col, row)  : returns(float)
         deleteCol : params(colnumber)
         deleteRow : params(rownumber)
         linComb   : params(vector)    : returns(array)   <- Linear combination
@@ -90,6 +91,9 @@ class Matrix:
 
     def getRow(self, rowNum):
         return(self.matrix[rowNum])
+
+    def getVal(self, col, row):
+        return(self.matrix[row][col])
 
     def deleteRow(self, rowNum):
         assert rowNum < self.numRows, "out of range"
