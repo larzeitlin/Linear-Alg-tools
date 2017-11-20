@@ -5,26 +5,26 @@ Matrix class with various methods useful for studying linear algebra
 
   ## Methods include:
 
-     | Method       | Params 		 | returns          | Notes			 |
+     | Method       | Params             | returns          | Notes                      |
      |--------------|--------------------|------------------|----------------------------|
-     |  printMatrix |                    |                  |   			 |  
-     |  printRow    |                    |                  |   			 | 
-     |  printCol    |                    |                  |    			 | 
-     |  getRow      | params(rownumber)  |  returns(array)  |				 | 
-     |  getCol      | params(colnumber)  |  returns(array)  |				 | 
-     |  getVal      | params(col, row)   |  returns(float)  |				 | 
-     |  deleteCol   | params(colnumber)  |                  |				 | 
-     |  deleteRow   | params(rownumber)  |                  |				 | 
+     |  printMatrix |                    |                  |                            |  
+     |  printRow    |                    |                  |                            | 
+     |  printCol    |                    |                  |                            | 
+     |  getRow      | params(rownumber)  |  returns(array)  |                            | 
+     |  getCol      | params(colnumber)  |  returns(array)  |                            | 
+     |  getVal      | params(col, row)   |  returns(float)  |                            | 
+     |  deleteCol   | params(colnumber)  |                  |                            | 
+     |  deleteRow   | params(rownumber)  |                  |                            | 
      |  linComb     | params(vector)     |  returns(array)  |   Linear combination       |
-     |  swapCol     | params(colA, colB) |                  |				 | 
-     |  swapRow     | params(rowA, rowB) |                  |				 | 
-     |  mMultedBy   | params(Matrix)     |  returns(Matrix) |   matrix multiplied by	 | 
-     |  transpose   |                    |  returns(Matrix) | 				 | 
-     |  ref         |                    |  returns(Matrix) |   row echelon form	 | 
-     |  rref        |                    |  returns(Matrix) |   reduced row echelon	 | 
-     |  nulspace    |                    |  returns(Matrix) |   null space basis	 | 
-     |  colspace    |                    |  returns(Matrix) |   column space basis	 | 
-     |  getRank     | params(Matrix)     |  returns(int)    |   rank of matrix       	 | 
+     |  swapCol     | params(colA, colB) |                  |                            | 
+     |  swapRow     | params(rowA, rowB) |                  |                            | 
+     |  mMultedBy   | params(Matrix)     |  returns(Matrix) |   matrix multiplied by     | 
+     |  transpose   |                    |  returns(Matrix) |                            | 
+     |  ref         |                    |  returns(Matrix) |   row echelon form         | 
+     |  rref        |                    |  returns(Matrix) |   reduced row echelon      | 
+     |  nulspace    |                    |  returns(Matrix) |   null space basis         | 
+     |  colspace    |                    |  returns(Matrix) |   column space basis       | 
+     |  getRank     | params(Matrix)     |  returns(int)    |   rank of matrix           | 
 
 
 ## note:
@@ -84,4 +84,4 @@ a.transpose().printMatrix()
 - ax = b
 - cython optimise
 - verbose methods
-	
+  
