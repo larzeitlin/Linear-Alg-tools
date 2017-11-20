@@ -21,6 +21,14 @@
         rref      :                   : returns(Matrix)  <- reduced row echelon
         nulspace  :                   : returns(Matrix)  <- null space basis
         colspace  :                   : returns(Matrix)  <- column space basis
+        getRank   : params(Matrix)    : returns(int)     <- rank of matrix
+
+## note:
+
+All numbering of columns and rows is zero indexed. 
+0, 0 is top left. 
+Matricies are initiaized row by row with the highest on the upper-most on the left
+
 
 ## features:
 
