@@ -80,9 +80,6 @@ a.transpose().printMatrix()
 
 
  ## To Do:
-- column space
-- row space
-- left null
 - ax = b
 - cython optimise
 - verbose methods
