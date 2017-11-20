@@ -6,26 +6,26 @@ Matrix class with various methods useful for studying linear algebra
   ## Methods include:
   
 
- | method       | parameters            | returns          | notes                      |
- |--------------|-----------------------|------------------|----------------------------|
- |  printMatrix |                       |                  |                            |  
- |  printRow    |                       |                  |                            | 
- |  printCol    |                       |                  |                            | 
- |  getRow      | rownumber(int)        |  array           |                            | 
- |  getCol      | colnumber(int)        |  array           |                            | 
- |  getVal      | col, row(int, int)    |  float           |                            | 
- |  deleteCol   | colnumber(int)        |                  |                            | 
- |  deleteRow   | rownumber(int)        |                  |                            | 
- |  linComb     | vector  (array)       |  array           |   Linear combination       |
- |  swapCol     | colA, colB(int, int)  |                  |                            | 
- |  swapRow     | rowA, rowB(int, int)  |                  |                            | 
- |  mMultedBy   | Matrix                |  Matrix          |   matrix multiplied by     | 
- |  transpose   |                       |  Matrix          |                            | 
- |  ref         |                       |  Matrix          |   row echelon form         | 
- |  rref        |                       |  Matrix          |   reduced row echelon      | 
- |  nulspace    |                       |  Matrix          |   null space basis         | 
- |  colspace    |                       |  Matrix          |   column space basis       | 
- |  getRank     | Matrix                |  int             |   rank of matrix           | 
+ | method        | parameters            | returns          | notes                      |
+ |---------------|-----------------------|------------------|----------------------------|
+ | *printMatrix* |                       |                  |   pretty print             |  
+ | *printRow   * |                       |                  |   pretty print             | 
+ | *printCol   * |                       |                  |   pretty print             | 
+ | *getRow     * | row(int)              |  array           |   0-indexed                | 
+ | *getCol     * | col(int)              |  array           |   0-indexed                | 
+ | *getVal     * | col, row(int, int)    |  float           |   0-indexed                | 
+ | *deleteCol  * | col(int)              |                  |   0-indexed                | 
+ | *deleteRow  * | row(int)              |                  |   0-indexed                | 
+ | *linComb    * | vector  (array)       |  array           |   Linear combination       |
+ | *swapCol    * | colA, colB(int, int)  |                  |   0-indexed                | 
+ | *swapRow    * | rowA, rowB(int, int)  |                  |   0-indexed                | 
+ | *mMultedBy  * | Matrix                |  Matrix          |   matrix multiplied by     | 
+ | *transpose  * |                       |  Matrix          |                            | 
+ | *ref        * |                       |  Matrix          |   row echelon form         | 
+ | *rref       * |                       |  Matrix          |   reduced row echelon      | 
+ | *nulspace   * |                       |  Matrix          |   null space basis         | 
+ | *colspace   * |                       |  Matrix          |   column space basis       | 
+ | *getRank    * | Matrix                |  int             |   rank of matrix           | 
 
 
 ## note:
