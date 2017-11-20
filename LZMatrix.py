@@ -24,6 +24,8 @@ class Matrix:
      | rref        |                      | Matrix  | reduced row echelon  |
      | nulspace    |                      | Matrix  | null space basis     |
      | colspace    |                      | Matrix  | column space basis   |
+     | rowspace    |                      | Matrix  | row space basis      |
+     | leftnul     |                      | Matrix  | leftnull space basis |
      | getRank     | Matrix               | int     | rank of matrix       |
 
 
@@ -264,4 +266,10 @@ class Matrix:
             if i not in pivotCols:
                 output.deleteCol(i)
         return(output)
-    
+
+    def rowspace(self):
+        return(self.transpose().colspace())
+
+    def leftnul(self):
+        return(self.transpose().nulspace())
+
