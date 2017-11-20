@@ -25,9 +25,10 @@
 
 ## note:
 
-All numbering of columns and rows is zero indexed. 
-0, 0 is top left. 
-Matricies are initiaized row by row with the highest on the upper-most on the left
+
+- All numbering of columns and rows is zero indexed. 
+- 0, 0 is top left. 
+- Matricies are initiaized row by row with the highest on the upper-most on the left
 
 
 ## features:
