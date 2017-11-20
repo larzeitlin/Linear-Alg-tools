@@ -4,24 +4,28 @@ import copy
 class Matrix:
     """ Matrix class with various methods useful for studying linear algebra
     Methods include:
-        printMatrix
-        printRow
-        printCol
-        getRow    : params(rownumber) : returns(array)
-        getCol    : params(colnumber) : returns(array)
-        getVal    : params(col, row)  : returns(float)
-        deleteCol : params(colnumber)
-        deleteRow : params(rownumber)
-        linComb   : params(vector)    : returns(array)   <- Linear combination
-        swapCol   : params(colA, colB)
-        swapRow   : params(rowA, rowB)
-        mMultedBy : params(Matrix)    : returns(Matrix)  <- matrix multiplied by
-        transpose :                   : returns(Matrix)
-        ref       :                   : returns(Matrix)  <- row echelon form
-        rref      :                   : returns(Matrix)  <- reduced row echelon
-        nulspace  :                   : returns(Matrix)  <- null space basis
-        colspace  :                   : returns(Matrix)  <- column space basis
-        getRank   : params(Matrix)    : returns(int)     <- rank of matrix
+
+     | method      | parameters           | returns | note                 |
+     |-------------|----------------------|---------|----------------------|
+     | printMatrix |                      |         | pretty print         |
+     | printRow    |                      |         | pretty print         |
+     | printCol    |                      |         | pretty print         |
+     | getRow      | row(int)             | array   | 0-indexed            |
+     | getCol      | col(int)             | array   | 0-indexed            |
+     | getVal      | col, row(int, int)   | float   | 0-indexed            |
+     | deleteCol   | col(int)             |         | 0-indexed            |
+     | deleteRow   | row(int)             |         | 0-indexed            |
+     | linComb     | vector  (array)      | array   | Linear combination   |
+     | swapCol     | colA, colB(int, int) |         | 0-indexed            |
+     | swapRow     | rowA, rowB(int, int) |         | 0-indexed            |
+     | mMultedBy   | Matrix               | Matrix  | matrix multiplied by |
+     | transpose   |                      | Matrix  |                      |
+     | ref         |                      | Matrix  | row echelon form     |
+     | rref        |                      | Matrix  | reduced row echelon  |
+     | nulspace    |                      | Matrix  | null space basis     |
+     | colspace    |                      | Matrix  | column space basis   |
+     | getRank     | Matrix               | int     | rank of matrix       |
+
 
         """
 
@@ -33,6 +37,7 @@ class Matrix:
 
     def dotProduct(self, v1, v2):
         """internal convenience method for dot product"""
+
         assert (len(v1) == len(v2)), "vectors must be same length"
         output = 0
         for i in range(len(v1)):
@@ -42,6 +47,7 @@ class Matrix:
     def calcMaxDig(self):
         """internal convenience method to help format printing.
         calculated max width of column"""
+
         curMax = 0
         for i in range(self.numRows):
             self.matrix[i] = [float(x) for x in self.matrix[i]]
@@ -140,6 +146,7 @@ class Matrix:
 
     def findPivots(self):
         """takes a ref or rref matrix to be useful"""
+
         pivots = []
         for index, row in enumerate(self.matrix):
             cy = index
@@ -187,6 +194,7 @@ class Matrix:
     def refp1s(self):
         """internal convenience function
         for setting all pivots to 1 for an ref"""
+
         output = self.ref()
         cx = 0
         cy = 0
