@@ -9,6 +9,8 @@ class Matrix:
         printCol
         getRow    : params(rownumber) : returns(array)
         getCol    : params(colnumber) : returns(array)
+        deleteCol : params(colnumber)
+        deleteRow : params(rownumber)
         linComb   : params(vector)    : returns(array)  <- Linear combination
         swapCol   : params(colA, colB)
         swapRow   : params(rowA, rowB)
@@ -16,7 +18,9 @@ class Matrix:
         transpose :                   : returns(Matrix)
         ref       :                   : returns(Matrix)  <- row echelon form
         rref      :                   : returns(Matrix)  <- reduced row echelon
-        nulspace  :                   : returns(Matrix)  <- Nulspace basis
+        nulspace  :                   : returns(Matrix)  <- null space basis
+        colSpace  :                   : returns(Matrix)  <- column space basis
+
         """
 
     def __init__(self, matrix=[]):
@@ -76,8 +80,21 @@ class Matrix:
             column.append(self.matrix[i][colNum])
         return(column)
 
+    def deleteCol(self, colNum):
+        assert colNum < self.numVars, "out of range"
+        assert colNum >= 0, "negative column number"
+        for i in self.matrix:
+            i.pop(colNum)
+        self.numVars = len(self.matrix[0])
+
     def getRow(self, rowNum):
         return(self.matrix[rowNum])
+
+    def deleteRow(self, rowNum):
+        assert rowNum < self.numRows, "out of range"
+        assert rowNum >= 0, "negative row number"
+        self.matrix.pop(rowNum)
+        self.numRows = len(self.matrix)
 
     def linComb(self, vector):
         assert len(vector) == self.numVars, "dimensions mis-match"
@@ -135,9 +152,9 @@ class Matrix:
             pivot = output.matrix[cy][cx]
             for step in range(cy + 1, output.numRows):
                 subpivot = output.matrix[step][cx]
-                operator = -(subpivot/pivot)
+                mult = -(subpivot/pivot)
                 for i in range(cx, output.numVars):
-                    output.matrix[step][i] += (operator * output.matrix[cy][i])
+                    output.matrix[step][i] += (mult * output.matrix[cy][i])
             cx += 1
             if(cx >= output.numVars):
                 return(output)
@@ -173,8 +190,8 @@ class Matrix:
                     break
             if(not emptyRow):
                 for s in range(cy - 1, -1, -1):
-                    operator = -(output.matrix[s][cx])
-                    newrow = [x + (operator * output.matrix[cy][ind])
+                    mult = -(output.matrix[s][cx])
+                    newrow = [x + (mult * output.matrix[cy][ind])
                               for ind, x in
                               enumerate(output.matrix[s])]
                     output.matrix[s] = newrow
@@ -219,4 +236,26 @@ class Matrix:
                 if temp[j] == 'P':
                     temp[j] = -(freeColVecs[i].pop(0))
             output.append(temp)
-        return(Matrix(output).transpose()) 
+        return(Matrix(output).transpose())
+
+    def colSpace(self):
+        ref = self.ref()
+        cx = 0
+        cy = 0
+        pivotCols = []
+        for index, row in enumerate(ref.matrix):
+            cy = index
+            cx = 0
+            while(ref.matrix[cy][cx] == 0):
+                cx += 1
+                if(cx >= ref.numVars):
+                    break
+            if(cx >= ref.numVars):
+                break
+            pivotCols.append(cx)
+        output = copy.deepcopy(self)
+        for i in range(self.numVars - 1, -1, -1):
+            if i not in pivotCols:
+                output.DeleteCol(i)
+        return(output)
+
