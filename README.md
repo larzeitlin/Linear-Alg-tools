@@ -1,7 +1,7 @@
 # Linear-Alg-tools
 
 
-Matrix class with various methods useful for studying linear algebra
+Matrix class with various methods useful for studying linear algebra. Of course there are more optimal libs out there, this is just me learning by doing...
 
   ## Methods include:
   
