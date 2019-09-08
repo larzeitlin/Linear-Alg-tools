@@ -77,10 +77,3 @@ a.transpose().printMatrix()
 | 2.0   4.0   0.0  |
 | -1.0  -3.0  0.0  |
 ```
-
-
- ## To Do:
-- ax = b
-- cython optimise
-- verbose methods
-  
